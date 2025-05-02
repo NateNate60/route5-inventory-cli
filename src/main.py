@@ -4,6 +4,7 @@ import getpass
 import requests
 
 from sell import sell
+from info import info
 
 def main ():
     print ("Welcome!")
@@ -20,7 +21,8 @@ def main ():
 
         if choice == "1":
             sell(token)
-        
+        if len(choice) > 3:
+            info(token, choice)
     
 
 if __name__ == "__main__":

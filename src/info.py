@@ -24,7 +24,11 @@ def info (token: str, barcode: str) -> None :
     
     data = response.json()
 
-    print(f"{data['description']} {data['condition']}")
+    print(f"\n{data['description']} {data['condition']}")
     print(f"Price: {data['sale_price'] / 100}")
     print(f"In stock: {data['quantity']}")
+
+    if data['consignor_name'] != '':
+        print(f"Consignor: {data['consignor_name']}\n"
+              f"Contact: {data['consignor_contact']}")
 

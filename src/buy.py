@@ -110,6 +110,7 @@ def buy (token: str) -> None:
                                     headers={"Authorization": f"Bearer {token}"})
         
         if response.status_code == 200:
+            print(f"\nTransaction ID:{response.json()['txid']}")
             print("PURCHASE SUCCESSFUL\n")
         else:
             print(f"An error occurred. Server returned non-successful status code {response.status_code}")

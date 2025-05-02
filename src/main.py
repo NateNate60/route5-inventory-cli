@@ -6,6 +6,7 @@ import requests
 from sell import sell
 from info import info
 from buy import buy
+from update import update
 
 def main ():
     print ("Welcome!")
@@ -24,6 +25,8 @@ def main ():
             sell(token)
         if choice == "2":
             buy(token)
+        if choice == "3":
+            update(token)
         if len(choice) > 3:
             info(token, choice)
 

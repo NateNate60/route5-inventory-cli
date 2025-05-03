@@ -18,7 +18,7 @@ def sell (token: str) -> None:
     print("Scan bar codes to add them to the cart, then press return when finished.")
     print("If a mistake is made, continue scanning. It can be corrected at the end.")
     while True:
-        barcode = input("Bar code: ")
+        barcode = input("Scan bar code or press return if finished: ")
 
         print()
         

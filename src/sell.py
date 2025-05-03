@@ -60,8 +60,9 @@ def sell (token: str) -> None:
     for item in cart.keys():
         item_price = items[item]["sale_price"]
         print(f"#{item_no}: {items[item]['description']} {items[item]['condition']}")
-        print(f"{cart[item]}x {item_price / 100} each = {item_price * cart[item] / 100}")
+        print(f"{cart[item]}x ${item_price / 100} each = ${item_price * cart[item] / 100}")
         print()
+        item_no += 1
 
     if price == 0:
         print("There are no items in this order.\n")
@@ -74,6 +75,7 @@ def sell (token: str) -> None:
         item = input("Scan items that need to be REMOVED from this order, or press enter if finished: ")
         if item in cart:
             print(f"Removed {items[item]['description']}")
+            price -= items[item]['sale_price']
             if cart[item] == 1:
                 cart.pop(item)
             else:
@@ -87,11 +89,27 @@ def sell (token: str) -> None:
     for item in cart.keys():
         item_price = items[item]["sale_price"]
         print(f"#{item_no}: {items[item]['description']} {items[item]['condition']}")
-        print(f"{cart[item]}x {item_price / 100} each = {item_price * cart[item] / 100}")
+        print(f"{cart[item]}x ${item_price / 100} each = ${item_price * cart[item] / 100}")
         print()
+        item_no += 1
 
-    print(f"Calculated price: {price / 100}")
-    price_paid = 100*float(input("Input price paid by customer: "))
+    print(f"Calculated price: ${price / 100}")
+
+    while True:
+        try:
+            price_paid = input("Input price paid by customer or press enter if they paid the asking price: $")
+            
+            if price_paid == "":
+                price_paid = price
+            
+            price_paid = 100 * float(price_paid)
+            break
+        except ValueError:
+            print("Please enter a decimal number or press enter if the customer paid the asking price.")
+    
+    if price == 0:
+        print("There are no items in the cart.")
+        return
 
     discount = price_paid / price
 

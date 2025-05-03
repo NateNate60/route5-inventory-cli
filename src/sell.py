@@ -95,6 +95,10 @@ def sell (token: str) -> None:
 
     print(f"Calculated price: ${price / 100}")
 
+    if price == 0:
+        print("There are no items in the cart.")
+        return
+
     while True:
         try:
             price_paid = input("Input price paid by customer or press enter if they paid the asking price: $")
@@ -107,9 +111,6 @@ def sell (token: str) -> None:
         except ValueError:
             print("Please enter a decimal number or press enter if the customer paid the asking price.")
     
-    if price == 0:
-        print("There are no items in the cart.")
-        return
 
     discount = price_paid / price
 

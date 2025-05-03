@@ -1,6 +1,7 @@
 import requests
 
 import config
+from convert_date import convert_date
 
 def info (token: str, barcode: str, print_info: bool = True) -> dict :
     """
@@ -28,7 +29,7 @@ def info (token: str, barcode: str, print_info: bool = True) -> dict :
 
     if print_info:
         print(f"\n{data['description']} {data['condition']}")
-        print(f"Price: ${data['sale_price'] / 100}")
+        print(f"Price: ${data['sale_price'] / 100}\t\tSet on {convert_date(data['sale_price_date'])}")
         print(f"In stock: {data['quantity']}")
 
         if data['consignor_name'] != '':

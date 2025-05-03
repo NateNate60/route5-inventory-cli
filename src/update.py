@@ -3,6 +3,7 @@ import requests
 import config
 from process_scan import process_scan
 from info import info
+from convert_date import convert_date
 
 def update (token: str) -> None:
     """
@@ -19,7 +20,7 @@ def update (token: str) -> None:
     
     for item in stale_items:
         print(f"{item['id']} {item['description']} {item['condition']}")
-        print(f"Priced at ${item['sale_price'] / 100} on {item['sale_price_date']}\n")
+        print(f"Priced at ${item['sale_price'] / 100} on {convert_date(item['sale_price_date'])}\n")
     
     print()
     while True:

@@ -11,6 +11,8 @@ def process_scan (barcode: str) -> tuple[str, str]:
     Return
         (str, str): A tuple of the processed bar code and the item's type.
     """
+    barcode = barcode.lstrip('0')
+
     if "cgccomics.com" in barcode:
         # CGC old label QR code
         barcode = barcode.split('/')[-2]
